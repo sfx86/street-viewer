@@ -1,0 +1,42 @@
+﻿<ArcGIS
+	defaultAssembly="StreetViewer.dll"
+	defaultNamespace="StreetViewer"
+	xmlns="http://schemas.esri.com/DADF/Registry"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
+
+	<AddInInfo id="StreetViewer_1.0.0" version="1.0.0" desktopVersion="3.0.36057">
+		<Name>StreetViewer</Name>
+		<Description>A simple tool that opens Google Street View in a browser with a map click.</Description>
+		<Image></Image>
+		<Author>felix</Author>
+		<Date>2023-07-06</Date>
+		<Subject>Map Exploration</Subject>
+	</AddInInfo>
+	<modules>
+		<insertModule id="StreetViewer_Module" className="StreetViewer" autoLoad="false" caption="Module1">
+			<controls>
+				<tool
+					id="StreetViewer_StreetViewer"
+					caption="Open in Street View"
+					keytip="T1"
+					className="StreetViewer"
+					loadOnClick="true"
+					smallImage="pack://application:,,,/ArcGIS.Desktop.Resources;component/Images/CursorDotCross16.png"
+					largeImage="pack://application:,,,/ArcGIS.Desktop.Resources;component/Images/CursorCrossDot32.png"
+					condition="esri_mapping_mapPane">
+					<tooltip heading="Open in Street View">
+						Click on the map to open the coordinates under the cursor in Google Street View.<disabledText />
+					</tooltip>
+				</tool>
+			</controls>
+		</insertModule>
+		<updateModule refID="esri_mapping">
+			<groups>
+				<updateGroup refID="esri_mapping_navigateGroup">
+					<insertTool refID="StreetViewer_StreetViewer" size="large"/>
+				</updateGroup>
+			</groups>	
+		</updateModule>
+	</modules>
+</ArcGIS>
